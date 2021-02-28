@@ -43,9 +43,9 @@ public class ObjectMain1 {
         PhysicClient[] clients = new PhysicClient[10];
         for (int i = 0; i < 10; i++) {
             clients[i] = new PhysicClient(name[i], age[i], gender[i]);
-            clients[i].setName(name[i]);
-            clients[i].setAge(age[i]);
-            clients[i].setGender(gender[i]);
+ //           clients[i].setName(name[i]);
+ //           clients[i].setAge(age[i]);
+//            clients[i].setGender(gender[i]);
         }
         Utils.sortByAges(clients);
         clients = Utils.filterByGender(clients, 'm');
