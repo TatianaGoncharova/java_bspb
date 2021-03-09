@@ -10,8 +10,8 @@ public class Utils {
 
     public static PhysicClient[] filterByGender(PhysicClient[] clients, char gender){
         int count = 0;
-        for (int i = 0; i < clients.length; i++) {
-            if(clients[i].getGender()==gender){
+        for (PhysicClient client: clients) {
+            if(client.getGender()==gender){
                 count++;
             }
         }

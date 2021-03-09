@@ -27,9 +27,19 @@ public class PhysicClient extends AbstractClient {
 
     @Override
     public String toString() {
-        return name + " " + age + " " + "Мужской";
+        GenderTypes genderType;
+
+        if (gender == 'm') {
+            genderType = GenderTypes.MEN;
+        }
+        else {
+            genderType = GenderTypes.WOMEN;
+        }
+
+        return name + " " + age + " " + genderType.getPolClient();
     }
 }
+
 
 
 
