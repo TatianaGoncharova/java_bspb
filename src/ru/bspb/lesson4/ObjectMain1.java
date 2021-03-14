@@ -1,8 +1,15 @@
 package ru.bspb.lesson4;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class ObjectMain1 {
     public static void main(String[] args) {
-        String[] name = new String[10];
+
+        int n_clients = 10;
+        String[] name = new String[n_clients];
         name[0] = "Воробьев Иван Иванович";
         name[1] = "Воронов Семен Семенович";
         name[2] = "Воронов Семен Семенович";
@@ -15,7 +22,7 @@ public class ObjectMain1 {
         name[9] = "Смирнова Надежда Вячеславовна";
 
         int[] age;
-        age = new int[10];
+        age = new int[n_clients];
         age[0] = 16;
         age[1] = 52;
         age[2] = 52;
@@ -27,7 +34,7 @@ public class ObjectMain1 {
         age[8] = 45;
         age[9] = 44;
 
-        char[] gender = new char[10];
+        char[] gender = new char[n_clients];
         gender[0] = 'm';
         gender[1] = 'm';
         gender[2] = 'm';
@@ -40,18 +47,36 @@ public class ObjectMain1 {
         gender[9] = 'f';
 
 
-        PhysicClient[] clients = new PhysicClient[10];
-        for (int i = 0; i < 10; i++) {
-            clients[i] = new PhysicClient(name[i], age[i], gender[i]);
-            //           clients[i].setName(name[i]);
-            //           clients[i].setAge(age[i]);
-//            clients[i].setGender(gender[i]);
-        }
-        Utils.sortByAges(clients);
-        clients = Utils.filterByGender(clients, 'm');
-        AbstractClient[] withoutDuplicate = Utils.deleteDuplicate(clients);
+//        PhysicClient[] clients = new PhysicClient[10];
+//        for (int i = 0; i < 10; i++) {
+//            clients[i] = new PhysicClient(name[i], age[i], gender[i]);
+//            //           clients[i].setName(name[i]);
+//            //           clients[i].setAge(age[i]);
+////            clients[i].setGender(gender[i]);
+//        }
+//        Utils.sortByAges(clients);
+//        clients = Utils.filterByGender(clients, 'm');
+//        AbstractClient[] withoutDuplicate = Utils.deleteDuplicate(clients);
+//
+//        Utils.print(withoutDuplicate);
 
-        Utils.print(withoutDuplicate);
+
+        ArrayList<PhysicClient> clients = new ArrayList<>();
+
+        for (int i = 0; i < n_clients; i++) {
+            clients.add(new PhysicClient(name[i], age[i], gender[i]));
+        }
+
+//        clients.sort(new ComparatorByAges()); //не нужен, потому что используем в TreeSet
+//        clients.removeIf(new PredicateByGender());
+
+//        System.out.println(clients);
+
+        Set<PhysicClient> setClients = new TreeSet<>(new ComparatorByAges());
+        setClients.addAll(clients);
+        setClients.removeIf(new PredicateByGender());
+
+        System.out.println(setClients);
     }
 
     IPClient[] ipClient = new IPClient[]{
