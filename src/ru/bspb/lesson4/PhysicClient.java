@@ -41,14 +41,12 @@ public class PhysicClient extends AbstractClient {
 
     @Override
     public int hashCode() {
-        int code = 100;
+        int code = 10;
         for (int i = 0; i < getName().length(); i++) {
             code += code * getName().length() * getName().charAt(i);
         }
         code *= age;
-
         code += gender;
-
 
         return code;
     }
