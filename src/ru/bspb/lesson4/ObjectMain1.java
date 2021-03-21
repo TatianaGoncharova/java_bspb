@@ -1,9 +1,7 @@
 package ru.bspb.lesson4;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ObjectMain1 {
     public static void main(String[] args) {
@@ -72,12 +70,27 @@ public class ObjectMain1 {
 
 //        System.out.println(clients);
 
-        Set<PhysicClient> setClients = new TreeSet<>(new ComparatorByAges());
-        setClients.addAll(clients);
-        setClients.removeIf(new PredicateByGender());
 
-        System.out.println(setClients);
+
+//        Set<PhysicClient> setClients = new TreeSet<>(new ComparatorByAges());
+//        setClients.addAll(clients);
+//        setClients.removeIf(new PredicateByGender());
+//
+//        System.out.println(setClients);
+
+
+
+        List<PhysicClient> collect = clients.stream()
+                .sorted(new ComparatorByAges())
+                .distinct()
+                .filter(client -> client.getGender() == 'm')
+//              .forEach(n -> System.out.println(n));
+                .collect(Collectors.toList()); // сохранение результата в коллекцию
+        System.out.println(collect);
     }
+
+
+
 
     IPClient[] ipClient = new IPClient[]{
             new IPClient("ИП Винни-Пух Иван Георгиевич", 35, 123456789012345L),
