@@ -5,6 +5,7 @@ public class IPClient extends AbstractClient{
 
     public IPClient(String name, int age, long ogrn) {
         super(name, age);
+        this.ogrn = ogrn;
     }
 
     public long getOgrn() {
