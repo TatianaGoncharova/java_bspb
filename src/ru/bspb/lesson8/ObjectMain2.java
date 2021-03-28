@@ -28,7 +28,7 @@ public class ObjectMain2 {
     public static List<LogEntry> getLogs(File[] files){
         List<LogEntry> logEntries = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
-            if (files[i].isDirectory()) continue;//начинаем следующую итерацию, если этот файл - дирректория.
+            if (files[i].isDirectory()) continue;//начинаем следующую итерацию, если этот файл - директория.
 
             try {
                 List<String> lines = Files.readAllLines(files[i].toPath());//readAllLines - позволяет считать все строки из текстового файла
@@ -52,9 +52,4 @@ public class ObjectMain2 {
 
         return new LogEntry(time, level, message);
     }
-
-
-
-
-
 }

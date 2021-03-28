@@ -35,6 +35,7 @@ public class LogEntry {
         this.message = message;
     }
 
+
     @Override
     public String toString() {
         return '\n' + "LogEntry{" + '\n' +
